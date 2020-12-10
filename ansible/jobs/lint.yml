@@ -1,0 +1,22 @@
+---
+description: >
+  Run role linters.
+
+parameters:
+  version:
+    description: Python version
+    type: string
+    default: "3.9"
+  resource_class:
+    description: Resource class
+    type: string
+    default: medium
+
+executor:
+  name: python
+  version: << parameters.version >>
+  resource_class: << parameters.resource_class >>
+
+steps:
+  - setup
+  - lint

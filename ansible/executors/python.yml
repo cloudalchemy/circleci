@@ -1,0 +1,16 @@
+---
+description: >
+  Python container executor
+
+parameters:
+  version:
+    description: Python version
+    type: string
+  resource_class:
+    description: Resource class
+    type: string
+
+resource_class: << parameters.resource_class >>
+
+docker:
+  - image: cimg/python:<< parameters.version >>

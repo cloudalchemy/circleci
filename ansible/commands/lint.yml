@@ -1,0 +1,11 @@
+---
+description: >
+  Lint Ansible roles.
+
+parameters:
+
+steps:
+  - run: pip install ansible-lint yamllint flake8
+  - run: ansible-lint
+  - run: yamllint .
+  - run: flake8
