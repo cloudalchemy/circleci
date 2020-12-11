@@ -1,0 +1,6 @@
+---
+version: 2.1
+
+description: |
+  Orb for building and publishing Cloudalchemy ansible roles. Full orb
+  source code: https://github.com/cloudalchemy/circleci
