@@ -1,0 +1,21 @@
+---
+description: >
+  Test Ansible roles.
+
+steps:
+  - setup_remote_docker
+  - run: ln -s ~/project ~/${CIRCLE_PROJECT_REPONAME}
+  - run: pip install -r test-requirements.txt
+  - run: molecule test -s default --destroy always
+  - run: |
+     if [[ -d 'molecule/alternative' ]]; then
+       molecule test -s alternative --destroy never
+     else
+       echo 'No alternative test'
+     fi
+  - run: |
+     if [[ -z "${CIRCLE_PULL_REQUEST}" ]] && [[ -d 'molecule/latest' ]]; then
+       molecule test -s latest --destroy never
+     else
+       echo 'Not running latest on PR'
+     fi
