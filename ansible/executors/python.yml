@@ -9,8 +9,14 @@ parameters:
   resource_class:
     description: Resource class
     type: string
+  ansible_version:
+    description: Resource class
+    type: string
+    default: '2.10'
 
 resource_class: << parameters.resource_class >>
 
 docker:
   - image: cimg/python:<< parameters.version >>
+    environment:
+      ANSIBLE: << parameters.ansible_version >>

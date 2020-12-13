@@ -1,0 +1,26 @@
+---
+description: >
+  Run role tests.
+
+parameters:
+  version:
+    description: Python version
+    type: string
+    default: "3.9"
+  resource_class:
+    description: Resource class
+    type: string
+    default: medium
+  ansible_version:
+    description: Ansible version
+    type: string
+
+executor:
+  name: python
+  version: << parameters.version >>
+  resource_class: << parameters.resource_class >>
+  ansible_version: << parameters.ansible_version >>
+
+steps:
+  - setup
+  - test
